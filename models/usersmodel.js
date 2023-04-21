@@ -1,7 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const mongoose = require('mongoose');
+const userSchema = mongoose.Schema({
+    name:{
+        type:String,
+        required: [true,"name is mandatory"],
+    },
+    password:{
+        type:String,
+        required: [true,"password is mandatory"]
+    }
+})
 
-router.route("/getuserdata").get(getUser);
-
-
-module.exports = router;
+module.exports = mongoose.model('users',userSchema);
